@@ -1,0 +1,28 @@
+# 敏感信息
+.claude/
+*.pem
+*.key
+.env
+.env.*
+
+# 依赖和构建
+node_modules/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# 开发文档（内部使用）
+.spec-workflow/
+test-*/
+docs/internal/
