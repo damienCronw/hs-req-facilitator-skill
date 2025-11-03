@@ -13,6 +13,16 @@ mcp-services:
 
 # HS Req Facilitator Skill
 
+```
+智能需求分析助手 | Intelligent Requirements Facilitator
+
+👤 作者: 苏州核朔智能科技有限公司
+📧 邮箱: limian@norkern.com
+🌐 网站: www.norker.com
+
+⚡ 版本: v2.0.0
+```
+
 **启动流程：激活技能后立即开始执行工作流程**
 
 ## 🚀 启动步骤
@@ -731,7 +741,17 @@ Use this skill when:
 ```
 用户: "合并需求文档" 或使用技能
 
-你: 🚀 开始执行需求文档合并流程...
+你:
+
+智能需求分析助手 | Intelligent Requirements Facilitator
+
+👤 作者: 苏州核朔智能科技有限公司
+📧 邮箱: limian@norkern.com
+🌐 网站: www.norker.com
+
+⚡ 版本: v2.0.0
+
+🚀 开始执行需求文档合并流程...
 
 📂 步骤1: 扫描代码和文档（必需）...
 
