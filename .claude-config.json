@@ -1,0 +1,38 @@
+{
+  "name": "hs-req-facilitator-skill",
+  "version": "2.0.0",
+  "automation": {
+    "enabled": true,
+    "autoDeploy": true,
+    "autoTest": true,
+    "hooks": {
+      "pre-commit": true,
+      "post-commit": true
+    }
+  },
+  "git": {
+    "autoCommitMessage": "auto-update {timestamp}",
+    "deployOnCommit": true,
+    "testOnDeploy": true
+  },
+  "production": {
+    "path": "~/.claude/skills/hs-req-facilitator-skill",
+    "autoBackup": true,
+    "backupRetentionDays": 7
+  },
+  "testing": {
+    "enabled": true,
+    "autoRun": true,
+    "tests": [
+      "file-integrity",
+      "askuserquestion-format",
+      "version-check",
+      "performance"
+    ]
+  },
+  "notifications": {
+    "enabled": true,
+    "onSuccess": true,
+    "onFailure": true
+  }
+}

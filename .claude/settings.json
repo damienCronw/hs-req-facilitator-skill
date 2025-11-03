@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "project": {
+    "name": "hs-req-facilitator-skill",
+    "type": "claude-code-skill",
+    "version": "2.0.0"
+  },
+  "automation": {
+    "git": {
+      "autoCommit": true,
+      "autoPush": false,
+      "commitMessageTemplate": "chore: auto-update {timestamp} - {files} file(s)",
+      "allowedFilePatterns": ["*.md", "*.json", "*.sh"],
+      "ignoredFilePatterns": ["*.log", "*.tmp", ".DS_Store"]
+    },
+    "deployment": {
+      "enabled": true,
+      "autoDeploy": true,
+      "targetPath": "~/.claude/skills/hs-req-facilitator-skill",
+      "backupEnabled": true,
+      "backupRetentionDays": 7
+    },
+    "testing": {
+      "enabled": true,
+      "runOnDeploy": true,
+      "requiredPassRate": 100
+    }
+  },
+  "notifications": {
+    "enabled": true,
+    "methods": ["log", "console"],
+    "events": ["deploy", "test", "error"]
+  },
+  "hooks": {
+    "pre-commit": {
+      "enabled": true,
+      "script": ".git/hooks/pre-commit",
+      "failOnError": true
+    },
+    "post-commit": {
+      "enabled": true,
+      "script": ".git/hooks/post-commit",
+      "autoDeploy": true
+    }
+  }
+}

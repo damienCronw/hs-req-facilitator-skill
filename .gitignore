@@ -1,9 +1,8 @@
 # 敏感信息
-.claude/
-*.pem
-*.key
 .env
 .env.*
+*.pem
+*.key
 
 # 依赖和构建
 node_modules/
@@ -22,7 +21,9 @@ build/
 .DS_Store
 Thumbs.db
 
-# 开发文档（内部使用）
-.spec-workflow/
-test-*/
-docs/internal/
+# 自动化日志
+.claude/logs/*.log
+watch-deploy.log
+
+# 备份目录
+*-backup-*

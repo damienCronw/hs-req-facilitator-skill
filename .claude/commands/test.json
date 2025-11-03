@@ -1,0 +1,15 @@
+{
+  "name": "test",
+  "description": "运行生产环境测试",
+  "usage": "/test [options]",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "测试选项 (full|quick)",
+      "required": false
+    }
+  ],
+  "script": "../test-production.sh",
+  "hooks": ["pre-deploy", "post-deploy"],
+  "enabled": true
+}
