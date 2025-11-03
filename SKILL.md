@@ -1,6 +1,6 @@
 ---
 name: hs-req-facilitator-skill
-description: Use this skill when users want to analyze, clarify, or improve requirements documents. Works well for projects with unclear requirements, missing specifications, or multiple requirement documents that need consolidation. Activate when users mention "requirements", "specifications", "analyze needs", or "clarify ambiguous requirements".
+description: Use this skill when users want to analyze, clarify, or improve requirements documents. Works well for projects with unclear requirements, missing specifications, or multiple requirement documents that need consolidation. Automatically generates spec-workflow format requirements documents. Activate when users mention "requirements", "specifications", "analyze needs", or "clarify ambiguous requirements".
 type: configuration-driven
 implementation: mcp-services
 version: "2.0.0"
@@ -42,10 +42,7 @@ mcp-services:
    - [ ] 即使没有发现问题，也至少进行一次用户交互
 
 3. **用户交互要求：**
-   - [ ] **检查工具**：确认 AskUserQuestion 工具是否可用
-   - [ ] **使用AskUserQuestion**：工具可用时使用 AskUserQuestion 调用
-   - [ ] **使用对话方式**：工具不可用时（如 Cursor 环境）使用对话询问
-   - [ ] **使用格式**：使用 "❓ 问题：[你的问题]" 格式
+   - [ ] **使用AskUserQuestion**：必须使用 AskUserQuestion 工具调用
    - [ ] **等待回答**：等待用户回答后再继续，不要直接进入下一步
    - [ ] **确保交互**：在提问后实际等待用户回答
 
@@ -328,7 +325,8 @@ Use this skill when:
    ```
 
 3. **如果项目使用 spec-workflow，获取上下文**：
-   - 使用 spec-workflow MCP 工具获取模板和上下文
+   - 尝试使用 spec-workflow MCP 工具获取模板和上下文
+   - 如果MCP不可用，使用 spec-workflow CLI 或直接生成标准格式
 
 **⚠️ 验证点：必须能看到实际读取的文件内容，不能只是列出文件名！**
 
@@ -549,9 +547,7 @@ Use this skill when:
   - [ ] 步骤2.3：已分析问题和缺失信息（模糊点、缺失信息、不一致性）
   - [ ] 步骤2.4：已列出功能需求清单并展示给用户
 - [ ] 基于Stage 2的分析结果生成了澄清问题
-- [ ] 检查了AskUserQuestion工具是否可用
-- [ ] 如果工具可用：使用 AskUserQuestion 工具与用户交互
-- [ ] 如果工具不可用：使用对话方式与用户交互（格式：❓ 问题：[问题]）
+- [ ] 使用 AskUserQuestion 工具与用户交互
 - [ ] 收集了用户回答（必须等待用户回答，不能直接继续）
 - [ ] 基于用户回答调整了后续问题（如需要）
 - [ ] 持续交互直到所有关键问题都得到回答
@@ -568,17 +564,9 @@ Use this skill when:
 
    **⚠️ 强制要求：必须与用户交互，不能跳过此步骤！**
 
-   **⚠️ 重要：工具可用性检查**
-
-   首先检查环境中是否有 AskUserQuestion 工具可用：
-   - 如果有：必须使用 AskUserQuestion 工具调用
-   - 如果没有（如 Cursor 环境）：必须使用对话方式询问用户
-
-   **AskUserQuestion 工具调用方式：**
-
-   - **方式1：如果环境支持 AskUserQuestion 工具**：
-     ```
-     必须使用 AskUserQuestion 工具调用，格式：
+   **AskUserQuestion 工具调用方式**：
+   ```
+   必须使用 AskUserQuestion 工具调用，格式：
      AskUserQuestion({
        questions: [
          {
@@ -604,39 +592,6 @@ Use this skill when:
      - 提供2-4个 `options`（选项列表）
      - 设置 `multiSelect` 为false（单选）或true（多选）
      - **必须等待用户回答，不能跳过**
-
-   - **方式2：如果环境不支持 AskUserQuestion 工具（如 Cursor）**：
-     ```
-     必须使用对话方式询问用户，格式：
-
-     ❓ 问题：[你的问题]
-
-     上下文：[问题上下文，包括：关联的需求、识别的模糊点、需要澄清的信息]
-
-     请等待用户回答后再继续。必须实际等待用户回答，不能直接继续！
-     ```
-
-     **⚠️ 关键：**
-     - 必须在对话中明确提出问题
-     - 必须等待用户回答后再继续下一步
-     - 不能在提问后立即进入下一步
-     - 可以将问题格式化为：
-       ```
-       ---
-       ❓ 澄清问题
-
-       基于Stage 2的分析，我发现以下需要澄清的问题：
-
-       问题1：[具体问题]
-       - 关联需求：[哪个需求]
-       - 识别的问题：[模糊点/缺失信息/不一致性]
-       - 需要的信息：[需要用户提供什么信息]
-
-       请回答：[具体问题]
-       ---
-
-       请等待用户回答后再继续。
-       ```
 
    **⚠️ 交互要求：**
 
@@ -679,12 +634,12 @@ Use this skill when:
 3. **检测和处理 spec-workflow 集成**：
    - 检测项目是否使用 spec-workflow（检查 `.spec-workflow` 目录）
    - 如果项目使用 spec-workflow：
-     - 使用 spec-workflow MCP 工具获取模板和上下文
+     - 尝试使用 spec-workflow MCP 工具获取模板和上下文
+     - 如果MCP不可用，使用 spec-workflow CLI 或直接生成标准格式
      - 更新 `.spec-workflow/specs/*/requirements.md`
    - 如果项目未使用 spec-workflow：
-     - 同样按照 spec-workflow 格式生成需求文档
-     - 询问用户是否创建 spec-workflow 结构（通过 AskUserQuestion）
-     - 如果用户同意，创建 `.spec-workflow/specs/[feature-name]/requirements.md`
+     - 自动按照 spec-workflow 格式生成需求文档
+     - 自动创建 `.spec-workflow/specs/[feature-name]/requirements.md`
 
 ### Stage 5: 需求文档合并（多个需求文档时）
 
@@ -722,7 +677,7 @@ Use this skill when:
    - **按照 spec-workflow 格式生成合并后的文档**（无论项目是否使用 spec-workflow）
    - **保存到 spec-workflow 格式的需求文档**：
      - 如果项目使用 spec-workflow：保存到 `.spec-workflow/specs/[feature-name]/requirements.md` 或 `.spec-workflow/requirements.md`
-     - 如果项目未使用 spec-workflow：询问用户是否创建 spec-workflow 结构，如果同意则创建 `.spec-workflow/specs/[feature-name]/requirements.md`
+     - 如果项目未使用 spec-workflow：自动创建 `.spec-workflow/specs/[feature-name]/requirements.md`
    - **删除所有已合并的需求文档**（删除前向用户确认要删除的文档列表）
    - **只保留合并后的文档，保证只有一份文档**
 
@@ -751,7 +706,7 @@ Use this skill when:
 - **Bash**: 查找文件、执行命令
 - **AskUserQuestion**: 与用户交互，澄清需求（必需）
 - **Write**: 更新和完善需求文档
-- **spec-workflow MCP**: 访问spec-workflow模板和上下文（如果项目使用spec-workflow）
+- **spec-workflow MCP 或 CLI**: 访问spec-workflow模板和上下文（如果可用），否则直接生成标准格式
 
 ---
 
@@ -897,7 +852,7 @@ AskUserQuestion: "没有发现问题需要澄清。是否要添加新需求？�
 [检测项目是否使用 spec-workflow]
 [按照 spec-workflow 格式生成需求文档]
 [如果项目使用 spec-workflow，更新 .spec-workflow/specs/*/requirements.md]
-[如果项目未使用 spec-workflow，询问用户是否创建 spec-workflow 结构]
+[如果项目未使用 spec-workflow，自动创建 .spec-workflow 目录结构]
 ```
 
 ---
