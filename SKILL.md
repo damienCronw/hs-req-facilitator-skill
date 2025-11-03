@@ -4,6 +4,9 @@ description: Use this skill when users want to analyze, clarify, or improve requ
 type: configuration-driven
 implementation: mcp-services
 version: "2.0.0"
+author: "苏州核朔智能科技有限公司"
+email: "limian@norkern.com"
+website: "www.norker.com"
 mcp-services:
   - spec-workflow
 ---

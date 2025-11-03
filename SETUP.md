@@ -2,6 +2,10 @@
 
 This guide provides detailed setup instructions for installing, configuring, and using hs-req-facilitator-skill.
 
+**Author**: 苏州核朔智能科技有限公司
+**Email**: limian@norkern.com
+**Website**: [www.norker.com](https://www.norker.com)
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)

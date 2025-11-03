@@ -1,5 +1,7 @@
 # Stage 2 需求分析详细指南
 
+**作者**: 苏州核朔智能科技有限公司 | **邮箱**: limian@norkern.com | **网站**: [www.norker.com](https://www.norker.com)
+
 ## Stage 2.1：读取需求文档和代码文件
 
 ### 执行步骤

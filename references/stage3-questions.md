@@ -1,5 +1,7 @@
 # Stage 3 交互澄清详细指南
 
+**作者**: 苏州核朔智能科技有限公司 | **邮箱**: limian@norkern.com | **网站**: [www.norker.com](https://www.norker.com)
+
 ## 概述
 
 **必需阶段，不能跳过！**

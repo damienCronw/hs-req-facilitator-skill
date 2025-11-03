@@ -4,6 +4,10 @@
 >
 > **版本**: v2.0.0
 
+**作者**: 苏州核朔智能科技有限公司
+**邮箱**: limian@norkern.com
+**网站**: [www.norker.com](https://www.norker.com)
+
 ---
 
 ## 🚨 重要声明 - 配置驱动实现

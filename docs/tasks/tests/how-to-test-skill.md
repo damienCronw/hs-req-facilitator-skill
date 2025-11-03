@@ -2,6 +2,8 @@
 
 This guide provides comprehensive testing instructions for the hs-req-facilitator-skill.
 
+**Author**: 苏州核朔智能科技有限公司 | **Email**: limian@norkern.com | **Website**: [www.norker.com](https://www.norker.com)
+
 ## Prerequisites
 
 - Claude Code installed

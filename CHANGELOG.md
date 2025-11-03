@@ -5,6 +5,10 @@ All notable changes to hs-req-facilitator-skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+**Author**: 苏州核朔智能科技有限公司
+**Email**: limian@norkern.com
+**Website**: [www.norker.com](https://www.norker.com)
+
 ## [Unreleased]
 
 ### Planned

@@ -2,6 +2,8 @@
 
 This guide provides step-by-step instructions for releasing hs-req-facilitator-skill.
 
+**Author**: 苏州核朔智能科技有限公司 | **Email**: limian@norkern.com | **Website**: [www.norker.com](https://www.norker.com)
+
 ## Prerequisites
 
 - Git installed and configured
