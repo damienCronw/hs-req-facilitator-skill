@@ -1,12 +1,28 @@
+<div align="center">
+
 # HS Req Facilitator Skill
+
+**智能需求分析助手 | Intelligent Requirements Facilitator**
+
+[![Website](https://img.shields.io/badge/Website-www.norker.com-blue)](https://www.norker.com)
+[![Email](https://img.shields.io/badge/Email-limian@norkern.com-red)](mailto:limian@norkern.com)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-v2.0.2-orange)](CHANGELOG.md)
+
+**由 [苏州核朔智能科技有限公司](https://www.norker.com) 开发 | 企业级需求分析解决方案**
+
+[⭐ 给我们一个 Star](https://github.com/[your-org]/hs-req-facilitator-skill) |
+[📖 查看文档](README.md) |
+[💬 联系我们](mailto:limian@norkern.com) |
+[🌐 访问官网](https://www.norker.com)
+
+---
+
+</div>
 
 > **智能需求分析助手，通过AI分析和交互式澄清完善需求文档**
 >
-> **版本**: v2.0.0
-
-**作者**: 苏州核朔智能科技有限公司
-**邮箱**: limian@norkern.com
-**网站**: [www.norker.com](https://www.norker.com)
+> 🤖 **完全AI驱动** | 🔍 **代码+文档联合分析** | ❓ **强制交互澄清** | 📊 **智能需求分析**
 
 ---
 
@@ -204,15 +220,9 @@ AskUserQuestion({
   - 环境兼容性指南
   - 故障排除检查清单
 
-### Cursor 环境专用文档
+### 专用指南（规划中）
 
-- **[CURSOR_CUSTOMIZATION_GUIDE.md](CURSOR_CUSTOMIZATION_GUIDE.md)**
-  - Cursor 环境自定义指南
-  - 配置说明
-
-- **[CURSOR_NATIVE_IMPLEMENTATION.md](CURSOR_NATIVE_IMPLEMENTATION.md)**
-  - Cursor 原生实现指南
-  - 详细配置步骤
+以下指南文件在某些版本中可能不存在，但会在未来版本中提供：
 
 ### 专用指南（规划中）
 
@@ -238,7 +248,7 @@ AskUserQuestion({
 - 没有收到交互提示
 
 **解决方案**：
-1. 检查是否在 Cursor 环境（不支持 AskUserQuestion 工具）
+1. 检查是否在Claude Code环境（仅此环境支持AskUserQuestion工具）
 2. 参考 [STAGE3-DEBUG.md](STAGE3-DEBUG.md) 中的"问题 1: 交互没有出现"
 
 #### 2. AskUserQuestion 工具不可用
@@ -248,9 +258,8 @@ AskUserQuestion({
 - 工具调用失败
 
 **解决方案**：
-- 在 Cursor 环境中使用对话模式
-- 格式：`❓ 问题：[问题内容]`
-- 等待用户在聊天中回答
+- 确保在Claude Code环境中运行
+- 确保AskUserQuestion工具可用
 - 参考 [STAGE3-DEBUG.md](STAGE3-DEBUG.md) 中的"问题 2: AskUserQuestion 工具不可用"
 
 #### 3. Stage 2 未完成
@@ -268,7 +277,7 @@ AskUserQuestion({
 
 在报告问题前，请检查：
 
-- [ ] 确认运行环境（Claude Code / Cursor）
+- [ ] 确认在Claude Code环境中运行
 - [ ] 确认 AskUserQuestion 工具可用性
 - [ ] Stage 2 的 4 个子步骤全部完成
 - [ ] Stage 3 使用了正确的 AskUserQuestion 格式
@@ -285,7 +294,7 @@ AskUserQuestion({
 - ✅ **必须执行** - Stage 3 不能跳过
 - ✅ **必须交互** - 必须使用 AskUserQuestion 工具或对话模式
 - ✅ **必须等待** - 必须等待用户回答后再继续
-- ✅ **环境适配** - Claude Code 使用 AskUserQuestion，Cursor 使用对话
+- ✅ **环境要求** - 仅Claude Code环境支持
 
 ### Stage 2 顺序要求
 
@@ -303,10 +312,10 @@ Stage 2 的 4 个子步骤必须按顺序执行：
 - ✅ 同步工具调用
 - ✅ 自动等待用户回答
 
-**Cursor 环境**：
+**不支持Cursor环境**：
 - ❌ 不支持 AskUserQuestion 工具
-- ✅ 使用对话交互模式
-- ✅ 手动等待用户回答
+- ❌ 不支持对话交互模式
+- ⚠️ 仅支持Claude Code环境
 
 ### AskUserQuestion 格式要求
 
@@ -342,7 +351,7 @@ AskUserQuestion({
 
 1. **环境信息**
    - 运行环境（Claude Code / Cursor）
-   - 技能包版本（v2.0.0）
+   - 技能包版本（v2.0.2）
 
 2. **错误详情**
    - 完整的错误信息
@@ -356,7 +365,6 @@ AskUserQuestion({
 
 - **主文档**：[SKILL.md](SKILL.md)
 - **调试指南**：[STAGE3-DEBUG.md](STAGE3-DEBUG.md)
-- **Cursor 指南**：[CURSOR_CUSTOMIZATION_GUIDE.md](CURSOR_CUSTOMIZATION_GUIDE.md)
 
 ---
 
@@ -371,9 +379,47 @@ AskUserQuestion({
 
 ## 📄 许可证
 
-本技能包采用 MIT 许可证。
+本技能包采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
 
 ---
+
+## 🏢 关于我们
+
+**HS Req Facilitator Skill** 由 [苏州核朔智能科技有限公司](https://www.norker.com) 开发维护。
+
+<div align="center">
+
+| 联系方式 | 信息 |
+|---------|------|
+| 🌐 **官网** | [www.norker.com](https://www.norker.com) |
+| 📧 **邮箱** | [limian@norkern.com](mailto:limian@norkern.com) |
+| 💼 **服务** | 智能需求分析、AI辅助开发、企业级解决方案 |
+
+</div>
+
+### 💼 商业支持
+
+如果您需要企业级服务，我们提供：
+
+- ✅ **企业级定制化开发** - 根据您的业务需求定制功能
+- ✅ **私有化部署支持** - 内网环境部署和技术支持
+- ✅ **培训和技术支持** - 团队培训和持续技术支持
+- ✅ **需求分析咨询服务** - 专业的需求分析服务
+
+**联系我们**：📧 [limian@norkern.com](mailto:limian@norkern.com) | 🌐 [www.norker.com](https://www.norker.com)
+
+### 🙏 致谢
+
+感谢使用 HS Req Facilitator Skill！如果这个项目对您有帮助，请：
+
+- ⭐ 给我们一个 Star（右上角）
+- 🔗 分享给您的团队和同事
+- 📝 提交 Issue 或 Pull Request
+- 💬 告诉我们您的使用体验
+
+---
+
+## 📌 重要提醒
 
 **重要提醒**：
 

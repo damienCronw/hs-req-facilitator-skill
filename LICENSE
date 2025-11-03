@@ -19,3 +19,31 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Attribution and Branding
+
+We appreciate attribution when using this software in your projects:
+
+### Option 1: Quick Attribution
+Add a link to our website in your project's README:
+```markdown
+Powered by [HS Req Facilitator Skill](https://github.com/[your-org]/hs-req-facilitator-skill)
+from [苏州核朔智能科技有限公司](https://www.norker.com)
+```
+
+### Option 2: Detailed Attribution
+Mention our company in your project documentation:
+- **Developed by**: 苏州核朔智能科技有限公司
+- **Website**: https://www.norker.com
+- **Email**: limian@norkern.com
+
+### Commercial Support
+For commercial support, enterprise features, or custom development,
+please contact us at [limian@norkern.com](mailto:limian@norkern.com) or visit [www.norker.com](https://www.norker.com)
+
+---
+
+Copyright (c) 2025 苏州核朔智能科技有限公司
+All rights reserved.
