@@ -1,0 +1,313 @@
+name: Release Skill Package
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Validate skill structure
+        run: |
+          echo "Validating skill structure..."
+
+          # Check required files
+          REQUIRED_FILES=(
+            "SKILL.md"
+            "README.md"
+            "VERSION"
+            "LICENSE"
+            ".gitignore"
+          )
+
+          for file in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "❌ Missing required file: $file"
+              exit 1
+            fi
+            echo "✅ Found: $file"
+          done
+
+          # Check YAML frontmatter in SKILL.md
+          if ! head -10 SKILL.md | grep -q "^name:"; then
+            echo "❌ SKILL.md missing name in frontmatter"
+            exit 1
+          fi
+
+          if ! head -10 SKILL.md | grep -q "^description:"; then
+            echo "❌ SKILL.md missing description in frontmatter"
+            exit 1
+          fi
+
+          echo "✅ SKILL.md has valid YAML frontmatter"
+
+          # Check directory structure
+          DIRECTORIES=(
+            "references"
+            "assets"
+            "examples"
+            "docs"
+          )
+
+          for dir in "${DIRECTORIES[@]}"; do
+            if [ -d "$dir" ]; then
+              echo "✅ Found directory: $dir"
+            else
+              echo "⚠️  Optional directory not found: $dir"
+            fi
+          done
+
+      - name: Check version consistency
+        run: |
+          VERSION_TAG=${GITHUB_REF#refs/tags/v}
+          FILE_VERSION=$(cat VERSION)
+
+          echo "Tag version: $VERSION_TAG"
+          echo "File version: $FILE_VERSION"
+
+          if [ "$VERSION_TAG" != "$FILE_VERSION" ]; then
+            echo "❌ Version mismatch between tag and VERSION file"
+            echo "Expected: $VERSION_TAG"
+            echo "Got: $FILE_VERSION"
+            exit 1
+          fi
+
+          echo "✅ Version is consistent"
+
+      - name: Validate YAML syntax
+        run: |
+          # Check SKILL.md YAML
+          python3 -c "
+          import yaml
+          import sys
+
+          with open('SKILL.md', 'r') as f:
+              content = f.read()
+
+          # Extract YAML frontmatter
+          if content.startswith('---'):
+              end_yaml = content.find('---', 3)
+              if end_yaml == -1:
+                  print('❌ Missing closing --- for YAML frontmatter')
+                  sys.exit(1)
+
+              yaml_content = content[3:end_yaml]
+              try:
+                  yaml.safe_load(yaml_content)
+                  print('✅ SKILL.yaml YAML syntax valid')
+              except Exception as e:
+                  print(f'❌ YAML syntax error: {e}')
+                  sys.exit(1)
+          else:
+              print('❌ SKILL.md missing YAML frontmatter')
+              sys.exit(1)
+          "
+
+      - name: Build skill package
+        run: |
+          SKILL_NAME=$(grep "^name:" SKILL.md | cut -d' ' -f2)
+          VERSION=$(cat VERSION)
+
+          echo "Skill name: $SKILL_NAME"
+          echo "Version: $VERSION"
+
+          # Create temporary directory for packaging
+          PACKAGE_DIR="package"
+          mkdir -p "$PACKAGE_DIR"
+
+          # Copy all files except .git and .github
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='package' \
+            --exclude='node_modules' \
+            --exclude='*.log' \
+            . "$PACKAGE_DIR/"
+
+          # Create zip file
+          ZIP_NAME="${SKILL_NAME}-${VERSION}.zip"
+          zip -r "$ZIP_NAME" "$PACKAGE_DIR/" > /dev/null
+
+          echo "✅ Created package: $ZIP_NAME"
+
+          # Calculate checksum
+          sha256sum "$ZIP_NAME" > "${ZIP_NAME}.sha256"
+
+          echo "Package size: $(du -h $ZIP_NAME | cut -f1)"
+          echo "Checksum:"
+          cat "${ZIP_NAME}.sha256"
+
+      - name: Generate release notes
+        run: |
+          if [ -f "CHANGELOG.md" ]; then
+            echo "Generating release notes from CHANGELOG.md..."
+
+            # Extract the latest version section
+            awk '
+            /^## \['"$VERSION"'\]/ {found=1; print; next}
+            /^## \[/ {if(found) exit; next}
+            found {print}
+            ' CHANGELOG.md > release-notes.md
+
+            if [ -s release-notes.md ]; then
+              echo "✅ Release notes generated"
+              cat release-notes.md
+            else
+              echo "⚠️  No changelog entry found for version $VERSION"
+              echo "Using default release notes"
+              cat > release-notes.md << EOF
+              # Release $VERSION
+
+              ## What's Changed
+
+              - Skill release $VERSION
+              - See CHANGELOG.md for details
+
+              ## Installation
+
+              \`\`\`bash
+              cp -r hs-req-facilitator-skill ~/.claude/skills/
+              \`\`\`
+
+              ## Documentation
+
+              - README.md - Overview and features
+              - SETUP.md - Installation guide
+              - SKILL.md - Complete skill documentation
+              EOF
+            fi
+          else
+            echo "⚠️  CHANGELOG.md not found, using default release notes"
+            cat > release-notes.md << EOF
+            # Release $VERSION
+
+            Release of hs-req-facilitator-skill
+
+            See documentation for installation and usage.
+            EOF
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "hs-req-facilitator-skill v${{ github.ref_name }}"
+          body_path: release-notes.md
+          files: |
+            *.zip
+            *.zip.sha256
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate release
+        run: |
+          echo "Validating release..."
+
+          # Check if release was created
+          if [ -n "${{ github.event.release }}" ]; then
+            echo "✅ Release created successfully"
+            echo "Release URL: ${{ github.event.release.html_url }}"
+            echo "Tag: ${{ github.event.release.tag_name }}"
+            echo "Draft: ${{ github.event.release.draft }}"
+          else
+            echo "⚠️  Release information not available"
+          fi
+
+      - name: Upload artifacts
+        run: |
+          echo "Release artifacts ready for distribution:"
+          ls -lh *.zip *.zip.sha256
+
+          # Verification steps
+          echo ""
+          echo "To verify the package:"
+          echo "1. Download the zip file"
+          echo "2. Extract: unzip hs-req-facilitator-skill-*.zip"
+          echo "3. Copy: cp -r hs-req-facilitator-skill-* ~/.claude/skills/"
+          echo "4. Test: Use skill in Claude Code"
+
+  validate-package:
+    runs-on: ubuntu-latest
+    needs: release
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Download release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: release-skill-package
+
+      - name: Validate zip structure
+        run: |
+          echo "Validating zip file structure..."
+
+          ZIP_FILE=$(ls *.zip)
+          echo "Testing: $ZIP_FILE"
+
+          # Test extraction
+          unzip -t "$ZIP_FILE" > /dev/null
+          if [ $? -eq 0 ]; then
+            echo "✅ Zip file integrity verified"
+          else
+            echo "❌ Zip file is corrupted"
+            exit 1
+          fi
+
+          # Extract and check structure
+          rm -rf test-extract
+          unzip -q "$ZIP_FILE" -d test-extract
+
+          # Check required files exist
+          if [ -f "test-extract/package/SKILL.md" ]; then
+            echo "✅ SKILL.md present"
+          else
+            echo "❌ SKILL.md missing"
+            exit 1
+          fi
+
+          if [ -f "test-extract/package/README.md" ]; then
+            echo "✅ README.md present"
+          else
+            echo "❌ README.md missing"
+            exit 1
+          fi
+
+          echo "✅ Package structure valid"
+
+  notify:
+    runs-on: ubuntu-latest
+    needs: [release, validate-package]
+    if: always() && (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v'))
+
+    steps:
+      - name: Notify success
+        if: needs.release.result == 'success'
+        run: |
+          echo "✅ Release completed successfully!"
+          echo "Tag: ${{ github.ref_name }}"
+          echo "URL: https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+
+      - name: Notify failure
+        if: needs.release.result == 'failure'
+        run: |
+          echo "❌ Release failed!"
+          echo "Please check the workflow logs for details"
+          exit 1
