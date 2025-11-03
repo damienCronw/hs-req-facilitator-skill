@@ -9,7 +9,7 @@
       "required": false
     }
   ],
-  "script": "../test-production.sh",
+  "script": "../scripts/test-production.sh",
   "hooks": ["pre-deploy", "post-deploy"],
   "enabled": true
 }

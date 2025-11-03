@@ -9,7 +9,7 @@
       "required": false
     }
   ],
-  "script": "../watch-and-deploy.sh",
+  "script": "../scripts/watch-and-deploy.sh",
   "hooks": ["file-change"],
   "enabled": true
 }

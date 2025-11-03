@@ -9,7 +9,7 @@
       "required": false
     }
   ],
-  "script": "../auto-deploy.sh",
+  "script": "../scripts/auto-deploy.sh",
   "hooks": ["post-commit"],
   "enabled": true
 }
