@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-v2.0.2-orange)](CHANGELOG.md)
 
-**由 [苏州核朔智能科技有限公司](https://www.norker.com) 开源贡献**
+**由 [苏州核朔智能科技有限公司](https://www.norkern.com) 开源贡献**
 
 ---
 
@@ -42,7 +42,8 @@
    ```
 
 2. **导入 Claude Code**
-   - 将 `hs-req-facilitator-skill` 文件夹导入您的 Claude Code
+   - 在 Claude Code 中选择"导入技能"
+   - 选择 `hs-req-facilitator-skill` 文件夹中的 `SKILL.md` 文件
    - 技能会自动激活
 
 ### 使用前检查
@@ -244,4 +245,4 @@ Stage 5: 需求文档合并（可选）
 ---
 
 **🏢 苏州核朔智能科技有限公司**
-**📧 联系: limian@norkern.com | 🌐 网站: [www.norker.com](https://www.norker.com)**
+**📧 联系: limian@norkern.com | 🌐 网站: [www.norkern.com](https://www.norkern.com)**
