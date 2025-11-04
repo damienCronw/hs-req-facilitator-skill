@@ -1,6 +1,29 @@
 {
   "name": "hs-req-facilitator-skill",
-  "version": "2.0.0",
+  "version": "2.0.4",
+  "description": "智能需求分析助手 - 5-stage AI-driven requirements analysis",
+  "commands": {
+    "slash": [
+      "/hs-req",
+      "/req-facilitator",
+      "/需求分析"
+    ],
+    "shortcut": [
+      "hs-req",
+      "req-facilitator"
+    ],
+    "triggers": [
+      "分析需求",
+      "需求分析",
+      "requirements",
+      "specs"
+    ]
+  },
+  "usage": {
+    "direct": "直接在对话中输入技能名称",
+    "commands": "使用 /hs-req 命令（当Claude Code支持时）",
+    "description": "描述需求分析需求，技能会自动识别"
+  },
   "automation": {
     "enabled": true,
     "autoDeploy": true,

@@ -22,9 +22,28 @@ cp -r hs-req-facilitator-skill ~/.claude/skills/
 
 ### 使用
 
-在Claude Code中直接使用：
+在Claude Code中有多种调用方式：
+
+#### 方式1: 直接输入技能名称
 ```
 使用hs-req-facilitator-skill分析需求
+```
+
+#### 方式2: 简化命令
+```
+hs-req-facilitator-skill
+```
+
+#### 方式3: 描述调用
+```
+分析这个项目的需求文档
+```
+
+#### 方式4: 未来支持 - Slash命令
+当Claude Code支持时，可使用：
+```
+/hs-req
+/需求分析
 ```
 
 ---
