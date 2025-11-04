@@ -41,10 +41,13 @@
    git clone https://github.com/damienCronw/hs-req-facilitator-skill.git
    ```
 
-2. **导入 Claude Code**
-   - 在 Claude Code 中选择"导入技能"
-   - 选择 `hs-req-facilitator-skill` 文件夹中的 `SKILL.md` 文件
-   - 技能会自动激活
+2. **安装技能包**
+   - 复制 `hs-req-facilitator-skill` 文件夹到 Claude Code 技能目录
+   ```bash
+   cp -r hs-req-facilitator-skill ~/.claude/skills/
+   ```
+   - 重启 Claude Code
+   - 技能会自动加载
 
 ### 使用前检查
 
