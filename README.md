@@ -23,20 +23,29 @@
 
 ## 🚀 快速开始
 
+### 使用前检查
+
+- ✅ Claude Code 已安装并配置
+- ✅ 技能文件（SKILL.md）完整存在
+- ✅ 项目中有可读的需求文档
+- ✅ 有读取和写入权限
+
 ### 3步开始
 
 1. **激活技能**
-   ```bash
-   激活技能：hs-req-facilitator-skill
-   ```
+   在 Claude Code 中激活技能，使用关键词如：
+   - "分析需求文档"
+   - "澄清需求"
+   - "完善需求"
 
 2. **查看扫描结果**
-   - 技能会自动扫描项目文件
-   - 根据结果决定后续流程
+   - 技能会自动扫描项目中的需求文档和代码文件
+   - 根据扫描结果决定后续流程
 
 3. **完成交互澄清**
    - Stage 2 分析完成后进入 Stage 3
-   - 使用 AskUserQuestion 工具进行交互
+   - **Stage 3 是强制阶段，不能跳过**
+   - 使用 AskUserQuestion 工具进行交互澄清
    - **必须等待用户回答后再继续**
 
 ### 特殊场景
@@ -81,7 +90,7 @@ Stage 5: 需求文档合并（可选）
 ## 📚 核心文档
 
 - **[SKILL.md](SKILL.md)** - 主技能包文档，完整的工作流程定义（**必需阅读**）
-- **[STAGE3-DEBUG.md](STAGE3-DEBUG.md)** - Stage 3 交互澄清调试指南
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - 故障排查指南
 
 ---
 
@@ -90,17 +99,22 @@ Stage 5: 需求文档合并（可选）
 ### Stage 3 是强制阶段
 
 - ✅ **必须执行** - Stage 3 不能跳过
-- ✅ **必须交互** - 必须使用 AskUserQuestion 工具
-- ✅ **必须等待** - 必须等待用户回答后再继续
+- ✅ **必须在Stage 2完成后才能进入此阶段**
+- ✅ **不能在Stage 2之后直接进入Stage 4**
+- ✅ **必须使用 AskUserQuestion 工具与用户交互**
+- ✅ **必须至少进行一次 AskUserQuestion 交互**
+- ✅ **必须等待用户回答后再继续**
 
 ### Stage 2 顺序要求
 
 Stage 2 的 4 个子步骤必须按顺序执行：
 
-1. 步骤2.1：读取需求文档和代码文件
-2. 步骤2.2：理解项目功能（输出功能概述）
-3. 步骤2.3：分析问题和缺失信息
-4. 步骤2.4：列出功能需求清单
+1. **步骤2.1**：读取需求文档和代码文件
+2. **步骤2.2**：理解项目功能（必须输出功能概述）
+3. **步骤2.3**：分析问题和缺失信息（模糊点、缺失信息、不一致性）
+4. **步骤2.4**：列出功能需求清单（完整清单并展示给用户）
+
+**⚠️ 每步必须有实际输出**：不能只是说"已完成"，必须输出具体分析结果。
 
 ### AskUserQuestion 格式要求
 
@@ -124,17 +138,41 @@ AskUserQuestion({
 
 ### 常见问题
 
-#### Stage 3 没有出现
+#### Stage 3 交互未出现
+
+**症状**：跳过交互澄清，直接进入 Stage 4
 
 **解决方案**：
-1. 检查是否在 Claude Code 环境
-2. 参考 [STAGE3-DEBUG.md](STAGE3-DEBUG.md)
+1. 确认已完成 Stage 2 的所有4个子步骤
+2. 检查 AskUserQuestion 工具是否可用
+3. 查看是否有错误消息
 
-#### AskUserQuestion 工具不可用
+#### 文件扫描失败
+
+**症状**：提示"未找到需求文档"
 
 **解决方案**：
-- 确保在 Claude Code 环境中运行
-- 参考 [STAGE3-DEBUG.md](STAGE3-DEBUG.md)
+1. 确认文档格式为 `.md`
+2. 检查文档命名：`requirements.md`、`*requirement*.md` 或 `.spec-workflow/specs/*/requirements.md`
+3. 确认文件有读取权限
+
+#### 生成文档失败
+
+**症状**：技能运行但未生成改进文档
+
+**解决方案**：
+1. 检查工作目录写入权限
+2. 确认 Stage 3 交互已正常完成
+3. 查看错误日志
+
+#### 分析结果不准确
+
+**症状**：分析模糊或不完整
+
+**解决方案**：
+1. 在 Stage 3 中积极回答澄清问题
+2. 提供更多上下文信息
+3. 检查需求文档格式是否清晰
 
 ### 调试检查清单
 
@@ -154,9 +192,21 @@ AskUserQuestion({
 
 ## 💬 支持与反馈
 
-- **问题反馈**: [GitHub Issues](https://github.com/damienCronw/hs-req-facilitator-skill/issues)
-- **贡献指南**: [CONTRIBUTING.md](CONTRIBUTING.md)
-- **故障排查**: [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+### 🐛 问题反馈
+
+在 [GitHub Issues](https://github.com/damienCronw/hs-req-facilitator-skill/issues) 提交问题时，请提供：
+
+1. **环境信息**：Claude Code 版本、操作系统
+2. **问题描述**：详细说明问题现象
+3. **重现步骤**：如何触发问题
+4. **错误日志**：完整的错误信息
+
+### 📖 相关文档
+
+- **[SKILL.md](SKILL.md)** - 主技能包文档（必需阅读）
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - 故障排查指南
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - 贡献指南
+- **[SETUP.md](SETUP.md)** - 安装指南
 
 ---
 
