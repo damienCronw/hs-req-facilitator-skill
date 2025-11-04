@@ -1,6 +1,7 @@
 # [项目名称] 需求文档
 
-**作者**: 苏州核朔智能科技有限公司 | **邮箱**: limian@norkern.com | **网站**: [www.norker.com](https://www.norker.com)
+**模板来源**: hs-req-facilitator-skill | **作者**: 苏州核朔智能科技有限公司
+**邮箱**: limian@norkern.com | **网站**: [www.norker.com](https://www.norker.com)
 
 ## 1. 项目概述
 

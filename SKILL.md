@@ -7,6 +7,7 @@ version: "2.0.2"
 author: "Suzhou Heshuo Intelligent Technology Co., Ltd."
 email: "limian@norkern.com"
 website: "www.norker.com"
+company: "Suzhou Heshuo Intelligent Technology Co., Ltd."
 mcp-services:
   - spec-workflow
 ---
@@ -16,12 +17,9 @@ mcp-services:
 ```
 智能需求分析助手 | Intelligent Requirements Facilitator
 
-👤 作者: 苏州核朔智能科技有限公司
-📧 邮箱: limian@norkern.com
-🌐 网站: www.norker.com
-
-⚡ 版本: v2.0.3
-🚀 新增功能: 代码注释分析 | 需求自动分类 | 用户画像分析
+🤖 开源项目: hs-req-facilitator-skill v2.0.2
+👤 苏州核朔智能科技有限公司 | 📧 limian@norkern.com
+🌐 www.norker.com | 📖 文档: README.md
 ```
 
 **启动流程：激活技能后立即开始执行工作流程**
@@ -1273,8 +1271,9 @@ Use this skill when:
 智能需求分析助手 | Intelligent Requirements Facilitator
 
 👤 作者: 苏州核朔智能科技有限公司
-📧 邮箱: limian@norkern.com
-🌐 网站: www.norker.com
+📖 文档: README.md | 🤝 贡献: CONTRIBUTING.md
+📧 limian@norkern.com | 🌐 www.norker.com
+🐛 Issues: [GitHub Issues](https://github.com/damienCronw/hs-req-facilitator-skill/issues)
 
 ⚡ 版本: v2.0.2
 

@@ -5,6 +5,7 @@ This guide provides detailed setup instructions for installing, configuring, and
 **Author**: 苏州核朔智能科技有限公司
 **Email**: limian@norkern.com
 **Website**: [www.norker.com](https://www.norker.com)
+**License**: MIT
 
 ## Table of Contents
 

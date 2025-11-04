@@ -1,6 +1,7 @@
 # 示例：需求文档
 
-**作者**: 苏州核朔智能科技有限公司 | **邮箱**: limian@norkern.com | **网站**: [www.norker.com](https://www.norker.com)
+**作者**: 苏州核朔智能科技有限公司
+**邮箱**: limian@norkern.com | **网站**: [www.norker.com](https://www.norker.com)
 
 ## 项目概述
 本示例展示了如何使用 hs-req-facilitator-skill 分析和改进需求文档。

@@ -4,12 +4,13 @@
 
 **智能需求分析助手 | Intelligent Requirements Facilitator**
 
-[![Website](https://img.shields.io/badge/Website-www.norker.com-blue)](https://www.norker.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/damienCronw/hs-req-facilitator-skill)
 [![Email](https://img.shields.io/badge/Email-limian@norkern.com-red)](mailto:limian@norkern.com)
+[![Website](https://img.shields.io/badge/Website-www.norker.com-blue)](https://www.norker.com)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-v2.0.2-orange)](CHANGELOG.md)
 
-**由 [苏州核朔智能科技有限公司](https://www.norker.com) 开发**
+**由 [苏州核朔智能科技有限公司](https://www.norker.com) 开源贡献**
 
 ---
 
@@ -18,6 +19,8 @@
 > **智能需求分析助手，通过AI分析和交互式澄清完善需求文档**
 >
 > 🤖 **完全AI驱动** | 🔍 **代码+文档联合分析** | ❓ **强制交互澄清** | 📊 **智能需求分析** | 💬 **代码注释分析** | 🏷️ **需求自动分类** | 👤 **用户画像分析**
+>
+> 🎯 **企业级AI解决方案** | 💼 **商业支持可用** | 📧 联系: limian@norkern.com
 
 ---
 
@@ -31,6 +34,36 @@
 - ✅ **即开即用** - 只需要 SKILL.md 即可工作
 
 **请勿寻找不存在的代码文件** - 所有实现都在 SKILL.md 中！
+
+---
+
+## 🏢 关于我们
+
+**苏州核朔智能科技有限公司** 是一家专注于AI驱动软件开发工具的技术公司。
+
+### 我们的专业领域
+
+- ✅ **智能需求分析** - AI自动分析和改进项目需求
+- ✅ **AI辅助开发** - 提升开发效率和代码质量
+- ✅ **企业级解决方案** - 定制化开发和技术支持
+- ✅ **开源贡献** - 积极回馈开源社区
+
+### 我们的优势
+
+- 🤖 **深度AI集成** - 完全基于AI的理解和分析能力
+- 🔧 **企业级质量** - 严格的质量控制和测试覆盖
+- 💡 **持续创新** - 不断探索AI在软件开发中的应用
+- 🎯 **实战验证** - 产品在实际项目中验证有效
+
+### 商业服务
+
+我们提供专业的商业支持服务：
+- 📦 **企业级定制开发** - 根据业务需求定制功能
+- 🏗️ **私有化部署** - 内网环境部署和技术支持
+- 🔍 **专业咨询服务** - 需求分析和技术咨询服务
+- 💻 **技术开发合作** - AI驱动软件开发项目合作
+
+**联系我们**：📧 [limian@norkern.com](mailto:limian@norkern.com) | 🌐 [www.norker.com](https://www.norker.com)
 
 ---
 
@@ -53,19 +86,43 @@
 - [文档导航](#-文档导航)
 - [故障排除](#-故障排除)
 - [重要注意事项](#-重要注意事项)
+- [关于我们](#-关于我们)
 
 ---
 
 ## ✨ 功能特性
+
+### 基础工作流（5个Stage）
 
 - **Stage 0**: 强制工作流检查
 - **Stage 1**: 代码和文档扫描（自动）
 - **Stage 2**: 需求分析（4步骤流程）
 - **Stage 3**: 交互澄清（**强制阶段**）
 - **Stage 4**: 需求增强
-- **Stage 5**: 需求文档合并
+- **Stage 5**: 需求文档合并（可选）
 
-**核心能力**：
+### 扩展功能（自动执行）
+
+- 💬 **代码注释分析**（扩展2.2.1）
+  - **执行时机**: Stage 2.2完成后自动执行
+  - **功能**: 扫描代码注释中的TODO、FIXME、业务逻辑，提取隐含需求
+  - **支持语言**: TypeScript、JavaScript、Python、Java、Go、Rust、C++、C#
+  - **输出**: 隐含需求清单，包含优先级和实现状态
+
+- 🏷️ **需求自动分类**（扩展4.1）
+  - **执行时机**: Stage 4中可选执行
+  - **功能**: 智能分类需求类型、评估优先级、识别依赖、生成标签
+  - **算法**: 多维度优先级评估（P0-P3）
+  - **输出**: 分类结果、结构化标签、依赖关系图
+
+- 👤 **用户画像分析**（Stage 8）
+  - **执行时机**: Stage 4完成后可选执行，或独立使用
+  - **功能**: 提取用户角色、特征、场景、目标和痛点
+  - **分析维度**: 人口统计、行为特征、使用场景
+  - **输出**: 结构化用户画像，可视化用户旅程
+
+### 核心能力
+
 - 🎨 **启动横幅**：技能启动时显示作者和网站信息
 - 🔍 自动扫描项目文件（需求文档 + 代码文件）
 - 📊 智能需求分析（4个子步骤严格顺序执行）
@@ -78,7 +135,7 @@
 
 ## 🔄 工作流程
 
-### 完整工作流（5个阶段）
+### 完整工作流（含扩展功能）
 
 ```
 Stage 0: 强制检查点验证
@@ -88,17 +145,25 @@ Stage 1: 代码和文档扫描（自动）
 Stage 2: 需求分析（4步骤）
     ├─ 步骤2.1: 读取需求文档和代码文件
     ├─ 步骤2.2: 理解项目功能
-    ├─ 步骤2.3: 分析问题和缺失信息
-    └─ 步骤2.4: 列出功能需求清单
+    ├─ 💬 扩展2.2.1: 代码注释分析（自动执行）
+    └─ 步骤2.3: 分析问题和缺失信息
+        └─ 步骤2.4: 列出功能需求清单
     ↓
 Stage 3: 交互澄清（强制）
     ↓
 Stage 4: 需求增强
+    ├─ 🏷️ 扩展4.1: 需求自动分类（可选）
+    └─ 👤 Stage 8: 用户画像分析（可选）
     ↓
 Stage 5: 需求文档合并（可选）
 ```
 
 **⚠️ Stage 3 是强制阶段** - 绝对不能跳过！必须使用 AskUserQuestion 工具与用户交互。
+
+**📝 扩展功能说明**:
+- 💬 **代码注释分析**：Stage 2.2完成后自动执行，无需手动触发
+- 🏷️ **需求自动分类**：Stage 4中可选执行，通常自动执行
+- 👤 **用户画像分析**：Stage 4后可选执行，可独立使用
 
 ### 工作流程图
 
@@ -388,11 +453,30 @@ AskUserQuestion({
 
 ---
 
-## 📧 联系信息
+## 💬 支持与反馈
 
-**开发维护**：苏州核朔智能科技有限公司
-**邮箱**：[limian@norkern.com](mailto:limian@norkern.com)
-**网站**：[www.norker.com](https://www.norker.com)
+### 🐛 报告问题
+- **[GitHub Issues](https://github.com/damienCronw/hs-req-facilitator-skill/issues)** - 提交Bug报告或功能请求
+- 📧 **[limian@norkern.com](mailto:limian@norkern.com)** - 直接联系技术支持
+
+### 💡 参与讨论
+- **[GitHub Discussions](https://github.com/damienCronw/hs-req-facilitator-skill/discussions)** - 社区讨论和Q&A
+- 🌐 **[www.norker.com](https://www.norker.com)** - 访问公司官网了解更多
+
+### 🤝 贡献代码
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - 查看贡献指南
+- 欢迎提交 Pull Request 和 Issue
+
+### 💼 企业服务咨询
+- **定制开发**: 根据业务需求定制功能
+- **私有化部署**: 支持内网环境部署
+- **技术咨询**: AI驱动软件开发咨询服务
+- 📧 **[limian@norkern.com](mailto:limian@norkern.com)** - 咨询商业合作
+
+### 📖 相关文档
+- [贡献指南](CONTRIBUTING.md)
+- [故障排查](TROUBLESHOOTING.md)
+- [安装指南](SETUP.md)
 
 ---
 

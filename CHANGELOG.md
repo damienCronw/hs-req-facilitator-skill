@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Author**: 苏州核朔智能科技有限公司
 **Email**: limian@norkern.com
 **Website**: [www.norker.com](https://www.norker.com)
+**Repository**: [GitHub](https://github.com/damienCronw/hs-req-facilitator-skill)
 
 ## [Unreleased]
 
