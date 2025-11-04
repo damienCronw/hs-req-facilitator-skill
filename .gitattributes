@@ -1,0 +1,11 @@
+# 禁用GitHub自动功能
+
+# 禁用自动检测语言统计
+linguist-documentation
+linguist-vendored
+linguist-generated
+
+# 禁用自动发布和release
+docs/* linguist-documentation
+examples/* linguist-documentation
+*.md linguist-documentation

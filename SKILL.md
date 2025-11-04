@@ -3,7 +3,7 @@ name: hs-req-facilitator-skill
 description: Use this skill when users want to analyze, clarify, or improve requirements documents. Works well for projects with unclear requirements, missing specifications, or multiple requirement documents that need consolidation. Automatically generates spec-workflow format requirements documents. Activate when users mention "requirements", "specifications", "analyze needs", or "clarify ambiguous requirements".
 type: configuration-driven
 implementation: mcp-services
-version: "2.0.2"
+version: "2.0.4"
 author: "Suzhou Heshuo Intelligent Technology Co., Ltd."
 email: "limian@norkern.com"
 website: "www.norker.com"
@@ -17,9 +17,9 @@ mcp-services:
 ```
 智能需求分析助手 | Intelligent Requirements Facilitator
 
-🤖 开源项目: hs-req-facilitator-skill v2.0.2
+🤖 开源项目: hs-req-facilitator-skill v2.0.4
 👤 苏州核朔智能科技有限公司 | 📧 limian@norkern.com
-🌐 www.norker.com | 📖 文档: README.md
+🌐 www.norkern.com | 📖 文档: README.md
 ```
 
 **启动流程：激活技能后立即开始执行工作流程**
@@ -350,9 +350,13 @@ Use this skill when:
 - [ ] 步骤2.1已完成（已读取需求文档和代码文件）
 - [ ] 已准备好开始理解项目功能
 
-**必须输出以下内容（每个部分都必须有具体输出，不能为空）：**
+**📌 核心要求：此步骤必须向用户展示项目功能概述！**
 
-1. **项目整体功能描述**（必须输出，不能只是说"已理解"）：
+**⚠️ 重要：用户启动技能后，需要知道被分析的项目是什么、解决什么问题、主要功能和技术栈，这样才能理解后续的需求分析。**
+
+**必须输出以下内容（每个部分都必须有具体输出并展示给用户，不能为空）：**
+
+1. **项目整体功能描述**（必须输出并展示给用户，不能只是说"已理解"）：
    ```
    ## 项目功能概述
 
@@ -374,7 +378,10 @@ Use this skill when:
    [列出项目使用的主要技术栈]
    ```
 
-   **验证点：输出明确的项目功能描述，不能只是说"已理解"！**
+   **重要要求：**
+   - ✅ **必须向用户展示这个项目功能概述**，让用户了解被分析的软件是干什么的
+   - ✅ 输出明确的项目功能描述，不能只是说"已理解"
+   - ✅ 确保用户能够理解项目的基本情况后再继续分析
 
 2. **每个需求的实际功能**（必须输出，必须分析每个需求）：
    ```
