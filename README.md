@@ -1,251 +1,93 @@
 # HS Req Facilitator Skill
 
-**智能需求分析助手 | Intelligent Requirements Facilitator**
+**智能需求分析助手** | 5-stage AI-driven requirements analysis
 
+[![Version](https://img.shields.io/badge/Version-v2.0.4-orange)](VERSION)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-v2.0.2-orange)](CHANGELOG.md)
 
-**由 [苏州核朔智能科技有限公司](https://www.norkern.com) 开源贡献**
-
----
-
-## 📦 简介
-
-智能需求分析助手是一个 **Claude Code skill**，通过AI分析和交互澄清帮助开发者、产品经理和业务分析师完善需求文档。
-
-**核心功能**:
-- 🤖 完全AI驱动的需求分析
-- 🔍 代码+文档联合分析
-- 💬 自动从代码注释提取隐含需求
-- 🏷️ 智能需求分类和优先级评估
-- 👤 用户画像分析
-- 🔄 支持多文档合并
-
-**特色**:
-- ✅ 配置驱动实现，无需安装
-- ✅ 强制交互澄清确保需求准确
-- ✅ 支持多种编程语言
-- ✅ 生成标准格式需求文档
+**作者**: 苏州核朔智能科技有限公司 | [www.norkern.com](https://www.norkern.com)
 
 ---
 
-## 🚀 安装与使用
+## 🚀 快速开始
 
 ### 安装
 
-这是一个 **Claude Code 技能包**，直接下载并导入 Claude Code 即可使用。
-
-1. **下载技能包**
-   ```bash
-   # 下载或克隆仓库
-   git clone https://github.com/damienCronw/hs-req-facilitator-skill.git
-   ```
-
-2. **安装技能包**
-   - 复制 `hs-req-facilitator-skill` 文件夹到 Claude Code 技能目录
-   ```bash
-   cp -r hs-req-facilitator-skill ~/.claude/skills/
-   ```
-   - 重启 Claude Code
-   - 技能会自动加载
-
-### 使用前检查
-
-- ✅ Claude Code 已安装并配置
-- ✅ 技能文件（SKILL.md）完整存在
-- ✅ 项目中有可读的需求文档
-- ✅ 有读取和写入权限
-
-### 快速开始
-
-#### 3步使用
-
-1. **激活技能**
-   在 Claude Code 中激活技能，使用关键词如：
-   - "分析需求文档"
-   - "澄清需求"
-   - "完善需求"
-
-2. **查看扫描结果**
-   - 技能会自动扫描项目中的需求文档和代码文件
-   - 根据扫描结果决定后续流程
-
-3. **完成交互澄清**
-   - 需求分析完成后进入交互澄清阶段
-   - **交互澄清是强制阶段，不能跳过**
-   - 通过对话方式澄清需求细节
-   - **必须完成交互才能继续**
-
-#### 特殊场景
-
-**无需求文档的项目**:
-1. 技能自动检测并询问是否创建
-2. 提供详细创建指导
-
-**多个需求文档的项目**:
-1. 技能检测多个文档并询问是否合并
-2. 用户同意后进入文档合并流程
-
----
-
-## 🔄 工作流程
-
-```
-Stage 0: 强制检查点验证
-    ↓
-Stage 1: 代码和文档扫描（自动）
-    ↓
-Stage 2: 需求分析（4步骤）
-    ├─ 步骤2.1: 读取需求文档和代码文件
-    ├─ 步骤2.2: 理解项目功能
-    ├─ 💬 代码注释分析（自动执行）
-    └─ 步骤2.3: 分析问题和缺失信息
-        └─ 步骤2.4: 列出功能需求清单
-    ↓
-Stage 3: 交互澄清（强制）
-    ↓
-Stage 4: 需求增强
-    ├─ 🏷️ 需求自动分类（可选）
-    └─ 👤 用户画像分析（可选）
-    ↓
-Stage 5: 需求文档合并（可选）
+1. 复制技能包到Claude Code：
+```bash
+cp -r hs-req-facilitator-skill ~/.claude/skills/
 ```
 
-**⚠️ 交互澄清是强制阶段** - 不能跳过！必须通过对话方式与用户交互澄清需求。
+2. 重启Claude Code，技能自动加载
+
+### 使用
+
+在Claude Code中直接使用：
+```
+使用hs-req-facilitator-skill分析需求
+```
 
 ---
 
-## 📚 核心文档
+## ✨ 核心功能
 
-- **[SKILL.md](SKILL.md)** - 主技能包文档，完整的工作流程定义（**必需阅读**）
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - 故障排查指南
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - 贡献指南
-- **[SETUP.md](SETUP.md)** - 安装指南
-
----
-
-## ⚠️ 重要注意事项
-
-### 交互澄清是强制阶段
-
-- ✅ **必须执行** - 交互澄清不能跳过
-- ✅ **必须在需求分析阶段完成后才能进入此阶段**
-- ✅ **不能在需求分析阶段之后直接进入需求增强阶段**
-- ✅ **必须通过对话方式与用户交互**
-- ✅ **必须至少进行一次交互澄清**
-- ✅ **必须完成交互才能继续后续流程**
-
-### 需求分析阶段顺序要求
-
-需求分析阶段的4个步骤必须按顺序执行：
-
-1. **步骤1**：读取需求文档和代码文件
-2. **步骤2**：理解项目功能（必须输出功能概述）
-3. **步骤3**：分析问题和缺失信息（模糊点、缺失信息、不一致性）
-4. **步骤4**：列出功能需求清单（完整清单并展示给用户）
-
-**⚠️ 每步必须有实际输出**：不能只是说"已完成"，必须输出具体分析结果。
-
-### 环境兼容性
-
-**Claude Code 环境**：
-- ✅ 完全支持
-- ✅ 同步交互
-- ✅ 自动等待用户回答
-
-**其他环境**：
-- ⚠️ 仅支持Claude Code环境
+- **5-stage工作流**: 系统化需求分析流程
+- **AI驱动分析**: 识别模糊点、缺失信息、不一致性
+- **交互澄清**: 通过AskUserQuestion补充需求
+- **Spec-Workflow集成**: 生成标准化需求文档
+- **多文档合并**: 智能合并多个需求文档
 
 ---
 
-## 🛠️ 故障排除
+## 📁 项目结构
 
-### 常见问题
-
-#### 交互澄清阶段未出现
-
-**症状**：跳过交互澄清，直接进入需求增强
-
-**解决方案**：
-1. 确认已完成需求分析阶段的所有4个步骤
-2. 检查是否在 Claude Code 环境
-3. 查看是否有错误消息
-
-#### 文件扫描失败
-
-**症状**：提示"未找到需求文档"
-
-**解决方案**：
-1. 确认文档格式为 `.md`
-2. 检查文档命名：`requirements.md`、`*requirement*.md` 或 `.spec-workflow/specs/*/requirements.md`
-3. 确认文件有读取权限
-
-#### 生成文档失败
-
-**症状**：技能运行但未生成改进文档
-
-**解决方案**：
-1. 检查工作目录写入权限
-2. 确认交互澄清阶段已正常完成
-3. 查看错误日志
-
-#### 分析结果不准确
-
-**症状**：分析模糊或不完整
-
-**解决方案**：
-1. 在交互澄清阶段积极回答问题
-2. 提供更多上下文信息
-3. 检查需求文档格式是否清晰
-
-### 调试检查清单
-
-- [ ] 确认在 Claude Code 环境中运行
-- [ ] 需求分析阶段的4个步骤全部完成
-- [ ] 交互澄清阶段已正常执行
-- [ ] 等待交互完成后再继续
+```
+hs-req-facilitator-skill/
+├── SKILL.md                          # 核心配置文件
+├── README.md                         # 项目说明
+├── .claude-config.json              # 技能配置
+├── LICENSE                           # MIT许可证
+├── VERSION                          # 版本号
+├── .spec-workflow/                  # 需求文档
+│   ├── requirements.md              # 原始需求
+│   └── requirements-enhanced.md     # 增强需求
+├── assets/                          # 模板资源
+│   └── requirements-template.md     # 需求模板
+└── examples/                        # 使用示例
+    └── requirements-example.md      # 示例文档
+```
 
 ---
 
-## 💬 支持与反馈
+## 📖 文档
 
-### 🐛 问题反馈
+- **SKILL.md** - 完整工作流程和使用指南
+- **requirements.md** - 技能功能需求定义
+- **requirements-enhanced.md** - 增强需求文档（包含自我分析结果）
 
-在 [GitHub Issues](https://github.com/damienCronw/hs-req-facilitator-skill/issues) 提交问题时，请提供：
+---
 
-1. **环境信息**：Claude Code 版本、操作系统
-2. **问题描述**：详细说明问题现象
-3. **重现步骤**：如何触发问题
-4. **错误日志**：完整的错误信息
+## 🤖 工作流程
 
-### 📖 相关文档
+1. **Stage 0**: 工作流检查
+2. **Stage 1**: 扫描代码和文档
+3. **Stage 2**: 需求分析（4子步骤）
+4. **Stage 3**: 交互澄清（强制）
+5. **Stage 4**: 需求完善
 
-- **[SKILL.md](SKILL.md)** - 主技能包文档（必需阅读）
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - 故障排查指南
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** - 贡献指南
-- **[SETUP.md](SETUP.md)** - 安装指南
-
-### 💡 社区支持
-
-- 查看 [GitHub Discussions](https://github.com/damienCronw/hs-req-facilitator-skill/discussions)
-- 搜索已解决的类似问题
+详细说明请查看 [SKILL.md](SKILL.md)
 
 ---
 
 ## 📄 许可证
 
-本技能包采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
+MIT License - 详见 [LICENSE](LICENSE)
 
 ---
 
-## 📝 更新日志
+## 📞 联系方式
 
-| 版本 | 日期 | 更新内容 |
-|------|------|---------|
-| v2.0.0 | 2025-11-04 | 添加工作流程图，修正交互澄清流程，完善交互澄清强制检查 |
-| v1.0.0 | 2025-11-02 | 初始版本，配置驱动实现 |
-
----
-
-**🏢 苏州核朔智能科技有限公司**
-**📧 联系: limian@norkern.com | 🌐 网站: [www.norkern.com](https://www.norkern.com)**
+**苏州核朔智能科技有限公司**
+邮箱: limian@norkern.com
+网站: [www.norkern.com](https://www.norkern.com)
+GitHub: [damienCronw/hs-req-facilitator-skill](https://github.com/damienCronw/hs-req-facilitator-skill)
