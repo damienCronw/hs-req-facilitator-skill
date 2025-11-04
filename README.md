@@ -5,23 +5,45 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-v2.0.2-orange)](CHANGELOG.md)
 
+**由 [苏州核朔智能科技有限公司](https://www.norker.com) 开源贡献**
+
 ---
 
 ## 📦 简介
 
-智能需求分析助手，通过AI分析和交互式澄清完善需求文档。
+智能需求分析助手是一个 **Claude Code 技能包**，通过AI分析和交互澄清帮助开发者、产品经理和业务分析师完善需求文档。
 
-**特性**:
-- 🤖 完全AI驱动
+**核心功能**:
+- 🤖 完全AI驱动的需求分析
 - 🔍 代码+文档联合分析
-- ❓ 强制交互澄清
-- 📊 智能需求分析
-- 💬 代码注释分析
-- 🏷️ 需求自动分类
+- 💬 自动从代码注释提取隐含需求
+- 🏷️ 智能需求分类和优先级评估
+- 👤 用户画像分析
+- 🔄 支持多文档合并
+
+**特色**:
+- ✅ 配置驱动实现，无需安装
+- ✅ 强制交互澄清确保需求准确
+- ✅ 支持多种编程语言
+- ✅ 生成标准格式需求文档
 
 ---
 
-## 🚀 快速开始
+## 🚀 安装与使用
+
+### 安装
+
+这是一个 **Claude Code 技能包**，直接下载并导入 Claude Code 即可使用。
+
+1. **下载技能包**
+   ```bash
+   # 下载或克隆仓库
+   git clone https://github.com/damienCronw/hs-req-facilitator-skill.git
+   ```
+
+2. **导入 Claude Code**
+   - 将 `hs-req-facilitator-skill` 文件夹导入您的 Claude Code
+   - 技能会自动激活
 
 ### 使用前检查
 
@@ -30,7 +52,9 @@
 - ✅ 项目中有可读的需求文档
 - ✅ 有读取和写入权限
 
-### 3步开始
+### 快速开始
+
+#### 3步使用
 
 1. **激活技能**
    在 Claude Code 中激活技能，使用关键词如：
@@ -43,12 +67,12 @@
    - 根据扫描结果决定后续流程
 
 3. **完成交互澄清**
-   - Stage 2 分析完成后进入 Stage 3
-   - **Stage 3 是强制阶段，不能跳过**
-   - 使用 AskUserQuestion 工具进行交互澄清
-   - **必须等待用户回答后再继续**
+   - Stage 2 分析完成后进入交互澄清阶段
+   - **交互澄清是强制阶段，不能跳过**
+   - 通过对话方式澄清需求细节
+   - **必须完成交互才能继续**
 
-### 特殊场景
+#### 特殊场景
 
 **无需求文档的项目**:
 1. 技能自动检测并询问是否创建
@@ -83,7 +107,7 @@ Stage 4: 需求增强
 Stage 5: 需求文档合并（可选）
 ```
 
-**⚠️ Stage 3 是强制阶段** - 不能跳过！必须使用 AskUserQuestion 工具与用户交互。
+**⚠️ 交互澄清是强制阶段** - 不能跳过！必须通过对话方式与用户交互澄清需求。
 
 ---
 
@@ -91,19 +115,21 @@ Stage 5: 需求文档合并（可选）
 
 - **[SKILL.md](SKILL.md)** - 主技能包文档，完整的工作流程定义（**必需阅读**）
 - **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - 故障排查指南
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - 贡献指南
+- **[SETUP.md](SETUP.md)** - 安装指南
 
 ---
 
 ## ⚠️ 重要注意事项
 
-### Stage 3 是强制阶段
+### 交互澄清是强制阶段
 
-- ✅ **必须执行** - Stage 3 不能跳过
+- ✅ **必须执行** - 交互澄清不能跳过
 - ✅ **必须在Stage 2完成后才能进入此阶段**
 - ✅ **不能在Stage 2之后直接进入Stage 4**
-- ✅ **必须使用 AskUserQuestion 工具与用户交互**
-- ✅ **必须至少进行一次 AskUserQuestion 交互**
-- ✅ **必须等待用户回答后再继续**
+- ✅ **必须通过对话方式与用户交互**
+- ✅ **必须至少进行一次交互澄清**
+- ✅ **必须完成交互才能继续后续流程**
 
 ### Stage 2 顺序要求
 
@@ -116,21 +142,15 @@ Stage 2 的 4 个子步骤必须按顺序执行：
 
 **⚠️ 每步必须有实际输出**：不能只是说"已完成"，必须输出具体分析结果。
 
-### AskUserQuestion 格式要求
+### 环境兼容性
 
-```javascript
-AskUserQuestion({
-  questions: [{
-    header: "标题（≤12字符）",
-    question: "具体问题",
-    options: [
-      {label: "选项1", description: "描述1"},
-      {label: "选项2", description: "描述2"}
-    ],
-    multiSelect: false
-  }]
-})
-```
+**Claude Code 环境**：
+- ✅ 完全支持
+- ✅ 同步交互
+- ✅ 自动等待用户回答
+
+**其他环境**：
+- ⚠️ 仅支持Claude Code环境
 
 ---
 
@@ -138,13 +158,13 @@ AskUserQuestion({
 
 ### 常见问题
 
-#### Stage 3 交互未出现
+#### 交互澄清阶段未出现
 
-**症状**：跳过交互澄清，直接进入 Stage 4
+**症状**：跳过交互澄清，直接进入需求增强
 
 **解决方案**：
 1. 确认已完成 Stage 2 的所有4个子步骤
-2. 检查 AskUserQuestion 工具是否可用
+2. 检查是否在 Claude Code 环境
 3. 查看是否有错误消息
 
 #### 文件扫描失败
@@ -162,7 +182,7 @@ AskUserQuestion({
 
 **解决方案**：
 1. 检查工作目录写入权限
-2. 确认 Stage 3 交互已正常完成
+2. 确认交互澄清阶段已正常完成
 3. 查看错误日志
 
 #### 分析结果不准确
@@ -170,23 +190,16 @@ AskUserQuestion({
 **症状**：分析模糊或不完整
 
 **解决方案**：
-1. 在 Stage 3 中积极回答澄清问题
+1. 在交互澄清阶段积极回答问题
 2. 提供更多上下文信息
 3. 检查需求文档格式是否清晰
 
 ### 调试检查清单
 
 - [ ] 确认在 Claude Code 环境中运行
-- [ ] 确认 AskUserQuestion 工具可用性
 - [ ] Stage 2 的 4 个子步骤全部完成
-- [ ] Stage 3 使用了正确的 AskUserQuestion 格式
-- [ ] 等待用户回答后再继续
-
----
-
-## 📄 许可证
-
-本技能包采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
+- [ ] 交互澄清阶段已正常执行
+- [ ] 等待交互完成后再继续
 
 ---
 
@@ -208,11 +221,27 @@ AskUserQuestion({
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - 贡献指南
 - **[SETUP.md](SETUP.md)** - 安装指南
 
+### 💡 社区支持
+
+- 查看 [GitHub Discussions](https://github.com/damienCronw/hs-req-facilitator-skill/discussions)
+- 搜索已解决的类似问题
+
+---
+
+## 📄 许可证
+
+本技能包采用 MIT 许可证。详见 [LICENSE](LICENSE) 文件。
+
 ---
 
 ## 📝 更新日志
 
 | 版本 | 日期 | 更新内容 |
 |------|------|---------|
-| v2.0.0 | 2025-11-04 | 添加工作流程图，修正 AskUserQuestion 调用格式，完善 Stage 3 强制检查 |
+| v2.0.0 | 2025-11-04 | 添加工作流程图，修正交互澄清流程，完善 Stage 3 强制检查 |
 | v1.0.0 | 2025-11-02 | 初始版本，配置驱动实现 |
+
+---
+
+**🏢 苏州核朔智能科技有限公司**
+**📧 联系: limian@norkern.com | 🌐 网站: [www.norker.com](https://www.norker.com)**
