@@ -235,7 +235,6 @@ AskUserQuestion({
 - **[SKILL.md](SKILL.md)** 📖
   - **主技能包文档**
   - 完整的工作流程定义
-  - 128行 ASCII 工作流程图
   - 所有 5 个阶段的详细说明
   - AskUserQuestion 工具调用示例
   - **必需阅读！**
