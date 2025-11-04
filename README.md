@@ -9,12 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-v2.0.2-orange)](CHANGELOG.md)
 
-**由 [苏州核朔智能科技有限公司](https://www.norker.com) 开发 | 企业级需求分析解决方案**
-
-[⭐ 给我们一个 Star](https://github.com/[your-org]/hs-req-facilitator-skill) |
-[📖 查看文档](README.md) |
-[💬 联系我们](mailto:limian@norkern.com) |
-[🌐 访问官网](https://www.norker.com)
+**由 [苏州核朔智能科技有限公司](https://www.norker.com) 开发**
 
 ---
 
@@ -22,7 +17,7 @@
 
 > **智能需求分析助手，通过AI分析和交互式澄清完善需求文档**
 >
-> 🤖 **完全AI驱动** | 🔍 **代码+文档联合分析** | ❓ **强制交互澄清** | 📊 **智能需求分析**
+> 🤖 **完全AI驱动** | 🔍 **代码+文档联合分析** | ❓ **强制交互澄清** | 📊 **智能需求分析** | 💬 **代码注释分析** | 🏷️ **需求自动分类** | 👤 **用户画像分析**
 
 ---
 
@@ -36,6 +31,16 @@
 - ✅ **即开即用** - 只需要 SKILL.md 即可工作
 
 **请勿寻找不存在的代码文件** - 所有实现都在 SKILL.md 中！
+
+---
+
+## 🔗 相关项目
+
+**MCP Server（独立项目）**:
+- 📦 **项目位置**: `../hs-req-facilitator-mcp/`
+- 📖 **用途**: 为 Cursor 等环境提供 MCP 服务支持
+- 📝 **说明**: MCP Server 是一个独立的 TypeScript 项目，与技能包分离
+- 🔗 **详细文档**: 请参考 `../hs-req-facilitator-mcp/README.md`
 
 ---
 
@@ -383,39 +388,11 @@ AskUserQuestion({
 
 ---
 
-## 🏢 关于我们
+## 📧 联系信息
 
-**HS Req Facilitator Skill** 由 [苏州核朔智能科技有限公司](https://www.norker.com) 开发维护。
-
-<div align="center">
-
-| 联系方式 | 信息 |
-|---------|------|
-| 🌐 **官网** | [www.norker.com](https://www.norker.com) |
-| 📧 **邮箱** | [limian@norkern.com](mailto:limian@norkern.com) |
-| 💼 **服务** | 智能需求分析、AI辅助开发、企业级解决方案 |
-
-</div>
-
-### 💼 商业支持
-
-如果您需要企业级服务，我们提供：
-
-- ✅ **企业级定制化开发** - 根据您的业务需求定制功能
-- ✅ **私有化部署支持** - 内网环境部署和技术支持
-- ✅ **培训和技术支持** - 团队培训和持续技术支持
-- ✅ **需求分析咨询服务** - 专业的需求分析服务
-
-**联系我们**：📧 [limian@norkern.com](mailto:limian@norkern.com) | 🌐 [www.norker.com](https://www.norker.com)
-
-### 🙏 致谢
-
-感谢使用 HS Req Facilitator Skill！如果这个项目对您有帮助，请：
-
-- ⭐ 给我们一个 Star（右上角）
-- 🔗 分享给您的团队和同事
-- 📝 提交 Issue 或 Pull Request
-- 💬 告诉我们您的使用体验
+**开发维护**：苏州核朔智能科技有限公司
+**邮箱**：[limian@norkern.com](mailto:limian@norkern.com)
+**网站**：[www.norker.com](https://www.norker.com)
 
 ---
 
